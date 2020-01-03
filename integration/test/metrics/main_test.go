@@ -8,38 +8,43 @@ import (
 	"os"
 	"testing"
 
-	"github.com/giantswarm/apprclient"
 	e2esetup "github.com/giantswarm/e2esetup/chart"
 	"github.com/giantswarm/e2esetup/chart/env"
-	"github.com/giantswarm/e2esetup/k8s"
-	"github.com/giantswarm/e2etests/managedservices"
+	"github.com/giantswarm/e2etests/basicapp"
 	"github.com/giantswarm/helmclient"
 	"github.com/giantswarm/k8sclient"
 	"github.com/giantswarm/micrologger"
-	"github.com/spf13/afero"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 	"github.com/giantswarm/kubernetes-metrics-server/integration/templates"
 )
 
 const (
-	testName = "metrics"
+	Name      = "metrics-server"
+	chartName = "metrics-server-app"
+)
 
-	metricsServerName = "metrics-server"
-	chartName         = "kubernetes-metrics-server"
+const (
+	envVarTarballURL = "E2E_TARBALL_URL"
 )
 
 var (
-	a          *apprclient.Client
+	ba         *basicapp.BasicApp
 	helmClient *helmclient.Client
-	k8sSetup   *k8s.Setup
-	k8sClients *k8sclient.Clients
+	k8sSetup   *k8sclient.Setup
 	l          micrologger.Logger
-	ms         *managedservices.ManagedServices
+	tarballURL string
 )
 
 func init() {
 	var err error
+
+	{
+		tarballURL = os.Getenv(envVarTarballURL)
+		if tarballURL == "" {
+			panic(fmt.Sprintf("env var '%s' must not be empty", envVarTarballURL))
+		}
+	}
 
 	{
 		c := micrologger.Config{}
@@ -49,20 +54,7 @@ func init() {
 		}
 	}
 
-	{
-		c := apprclient.Config{
-			Fs:     afero.NewOsFs(),
-			Logger: l,
-
-			Address:      "https://quay.io",
-			Organization: "giantswarm",
-		}
-		a, err = apprclient.New(c)
-		if err != nil {
-			panic(err.Error())
-		}
-	}
-
+	var k8sClients *k8sclient.Clients
 	{
 		c := k8sclient.ClientsConfig{
 			Logger: l,
@@ -76,12 +68,12 @@ func init() {
 	}
 
 	{
-		c := k8s.SetupConfig{
+		c := k8sclient.SetupConfig{
 			Logger: l,
 
 			Clients: k8sClients,
 		}
-		k8sSetup, err = k8s.NewSetup(c)
+		k8sSetup, err = k8sclient.NewSetup(c)
 		if err != nil {
 			panic(err.Error())
 		}
@@ -101,23 +93,22 @@ func init() {
 	}
 
 	{
-		c := managedservices.Config{
-			ApprClient: a,
+		c := basicapp.Config{
 			Clients:    k8sClients,
 			HelmClient: helmClient,
 			Logger:     l,
 
-			ChartConfig: managedservices.ChartConfig{
-				ChannelName:     fmt.Sprintf("%s-%s", env.CircleSHA(), testName),
-				ChartName:       chartName,
+			App: basicapp.Chart{
+				Name:            chartName,
 				ChartValues:     templates.MetricsServerValues,
 				Namespace:       metav1.NamespaceSystem,
+				URL:             tarballURL,
 				RunReleaseTests: false,
 			},
-			ChartResources: managedservices.ChartResources{
-				Deployments: []managedservices.Deployment{
+			ChartResources: basicapp.ChartResources{
+				Deployments: []basicapp.Deployment{
 					{
-						Name:      metricsServerName,
+						Name:      Name,
 						Namespace: metav1.NamespaceSystem,
 						DeploymentLabels: map[string]string{
 							"giantswarm.io/service-type": "managed",
@@ -135,7 +126,8 @@ func init() {
 				},
 			},
 		}
-		ms, err = managedservices.New(c)
+
+		ba, err = basicapp.New(c)
 		if err != nil {
 			panic(err.Error())
 		}
