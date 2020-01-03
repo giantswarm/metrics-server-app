@@ -25,7 +25,7 @@ func TestMetrics(t *testing.T) {
 	ctx := context.Background()
 
 	// Install chart and wait for deployed status
-	err := ms.Test(ctx)
+	err := ba.Test(ctx)
 	if err != nil {
 		t.Fatalf("%#v", err)
 	}
@@ -46,7 +46,7 @@ func TestMetrics(t *testing.T) {
 func checkMetricsAvailability(ctx context.Context) error {
 	var err error
 
-	restClient := k8sClients.K8sClient().CoreV1().RESTClient()
+	restClient := k8sSetup.K8sClient().CoreV1().RESTClient()
 
 	l.LogCtx(ctx, "level", "debug", "message", "waiting for the metrics become available")
 
