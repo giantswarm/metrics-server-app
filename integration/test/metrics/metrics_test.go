@@ -46,7 +46,7 @@ func TestMetrics(t *testing.T) {
 func checkMetricsAvailability(ctx context.Context) error {
 	var err error
 
-	restClient := k8sSetup.K8sClient().CoreV1().RESTClient()
+	restClient := k8sClients.K8sClient().CoreV1().RESTClient()
 
 	l.LogCtx(ctx, "level", "debug", "message", "waiting for the metrics become available")
 

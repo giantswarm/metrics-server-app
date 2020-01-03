@@ -31,6 +31,7 @@ const (
 var (
 	ba         *basicapp.BasicApp
 	helmClient *helmclient.Client
+	k8sClients *k8sclients.Clients
 	k8sSetup   *k8sclient.Setup
 	l          micrologger.Logger
 	tarballURL string
@@ -54,7 +55,6 @@ func init() {
 		}
 	}
 
-	var k8sClients *k8sclient.Clients
 	{
 		c := k8sclient.ClientsConfig{
 			Logger: l,
