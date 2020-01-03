@@ -31,7 +31,7 @@ const (
 var (
 	ba         *basicapp.BasicApp
 	helmClient *helmclient.Client
-	k8sClients *k8sclients.Clients
+	k8sClients *k8sclient.Clients
 	k8sSetup   *k8sclient.Setup
 	l          micrologger.Logger
 	tarballURL string
