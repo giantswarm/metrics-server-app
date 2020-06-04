@@ -17,7 +17,7 @@ import (
 	"github.com/giantswarm/micrologger"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/giantswarm/kubernetes-metrics-server/integration/templates"
+	"github.com/giantswarm/metrics-server-app/integration/templates"
 )
 
 const (
