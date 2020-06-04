@@ -121,7 +121,7 @@ func init() {
 							"app":                        app,
 						},
 						MatchLabels: map[string]string{
-							"app": appName,
+							"app": app,
 						},
 						PodLabels: map[string]string{
 							"giantswarm.io/service-type": "managed",
