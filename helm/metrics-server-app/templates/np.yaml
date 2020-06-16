@@ -16,14 +16,13 @@ spec:
       protocol: TCP
   egress:
   - to:
+    {{ $privateSubnets := list "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16" -}}
+    {{ $privateSubnets = append $privateSubnets .Values.Installation.V1.Guest.IPAM.NetworkCIDR -}}
+    {{ $privateSubnets = $privateSubnets | uniq -}}
+    {{ range $index, $privateSubnet := $privateSubnets -}}
     - ipBlock:
-        cidr: 10.0.0.0/8
-    - ipBlock:
-        cidr: 172.16.0.0/12
-    - ipBlock:
-        cidr: 192.168.0.0/16
-    - ipBlock:
-        cidr: {{ .Values.Installation.V1.Guest.IPAM.NetworkCIDR }}
+        cidr: {{ $privateSubnet }}
+    {{ end -}}
   policyTypes:
   - Egress
   - Ingress
