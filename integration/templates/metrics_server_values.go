@@ -30,9 +30,4 @@ resources: {}
 nodeSelector: {}
 tolerations: []
 e2e: true
-Installation:
-  V1:
-    Guest:
-      IPAM:
-        NetworkCIDR: "100.64.0.0/10"
 `
