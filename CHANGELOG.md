@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [update-metrics-server] - 2020-07-22
+
 ### Changed
 
 - Updated metrics-server version to 0.3.6.
@@ -59,7 +61,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
     - Add kubelet-certificate-authority flag
 
-[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/vupdate-metrics-server...HEAD
+[update-metrics-server]: https://github.com/giantswarm/metrics-server-app/compare/v1.1.0...vupdate-metrics-server
 [1.1.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/giantswarm/metrics-server-app/pull/11
 [v0.3.2]: https://github.com/giantswarm/kubernetes-metrics-server/pull/12
