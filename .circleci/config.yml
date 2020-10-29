@@ -19,18 +19,6 @@ workflows:
 
       - architect/integration-test:
           context: architect
-          name: basic-integration-test
-          test-dir: "integration/test/basic"
-          filters:
-            # Do not trigger the job on merge to master.
-            branches:
-              ignore:
-                - master
-          requires:
-            - push-to-default-app-catalog
-
-      - architect/integration-test:
-          context: architect
           name: metrics-integration-test
           test-dir: "integration/test/basic"
           filters:
