@@ -42,7 +42,7 @@ func init() {
 		c := apptest.Config{
 			Logger: l,
 
-			KubeConfig: env.KubeConfig(),
+			KubeConfigPath: env.KubeConfig(),
 		}
 		appTest, err = apptest.New(c)
 		if err != nil {
