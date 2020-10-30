@@ -77,5 +77,11 @@ func TestMain(m *testing.M) {
 		}
 	}
 
+	{
+		if v == 0 {
+			v = m.Run()
+		}
+	}
+
 	os.Exit(v)
 }
