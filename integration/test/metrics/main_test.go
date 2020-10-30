@@ -75,9 +75,7 @@ func TestMain(m *testing.M) {
 			l.LogCtx(ctx, "level", "error", "message", "install apps failed", "stack", fmt.Sprintf("%#v\n", err))
 			v = -1
 		}
-
-		os.Exit(v)
 	}
 
-	os.Exit(0)
+	os.Exit(v)
 }
