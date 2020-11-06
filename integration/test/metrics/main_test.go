@@ -56,7 +56,6 @@ func TestMain(m *testing.M) {
 	ctx := context.Background()
 
 	var err error
-	var v int
 
 	{
 		apps := []apptest.App{
@@ -71,7 +70,7 @@ func TestMain(m *testing.M) {
 		err = appTest.InstallApps(ctx, apps)
 		if err != nil {
 			l.LogCtx(ctx, "level", "error", "message", "install apps failed", "stack", fmt.Sprintf("%#v\n", err))
-			v = -1
+			os.Exit(-1)
 		}
 	}
 
