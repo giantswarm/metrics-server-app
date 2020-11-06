@@ -19,7 +19,6 @@ const (
 	app         = "metrics-server"
 	appName     = "metrics-server-app"
 	catalogName = "default-test"
-	catalogURL  = "https://giantswarm.github.io/default-test-catalog"
 )
 
 var (
@@ -63,7 +62,6 @@ func TestMain(m *testing.M) {
 		apps := []apptest.App{
 			{
 				CatalogName:   catalogName,
-				CatalogURL:    catalogURL,
 				Name:          appName,
 				Namespace:     metav1.NamespaceSystem,
 				SHA:           env.CircleSHA(),
@@ -77,11 +75,5 @@ func TestMain(m *testing.M) {
 		}
 	}
 
-	{
-		if v == 0 {
-			v = m.Run()
-		}
-	}
-
-	os.Exit(v)
+	os.Exit(m.Run())
 }
