@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  architect: giantswarm/architect@dev:update-integration-test
+  architect: giantswarm/architect@dev:apptestctl
 
 workflows:
   version: 2
@@ -20,7 +20,7 @@ workflows:
       - architect/integration-test:
           context: architect
           name: metrics-integration-test
-          setup-script: "integration/test/metrics/setup.sh"
+          install-app-platform: true
           test-dir: "integration/test/metrics"
           filters:
             # Do not trigger the job on merge to master.
