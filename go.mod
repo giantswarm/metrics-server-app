@@ -3,6 +3,7 @@ module github.com/giantswarm/metrics-server-app
 go 1.15
 
 require (
+	github.com/giantswarm/appcatalog v0.3.1-0.20201123102507-98a7a435f422 // indirect
 	github.com/giantswarm/apptest v0.7.0
 	github.com/giantswarm/backoff v0.2.0
 	github.com/giantswarm/microerror v0.2.1
