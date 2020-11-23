@@ -15,4 +15,4 @@ require (
 	k8s.io/apimachinery v0.18.9
 )
 
-replace github.com/giantswarm/appcatalog => github.com/giantswarm/appcatalog v0.3.1-0.20201123102507-98a7a435f422
+replace github.com/giantswarm/appcatalog => github.com/giantswarm/appcatalog v0.3.1-0.20201123105922-c4a5b9a9e5ee
