@@ -49,7 +49,6 @@ args:
   - --logtostderr
 # enable this if you have self-signed certificates, see: https://github.com/kubernetes-incubator/metrics-server
   - --kubelet-insecure-tls
-  - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
   - --kubelet-use-node-status-port
   - --cert-dir=/tmp
   - --secure-port=10443

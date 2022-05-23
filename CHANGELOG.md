@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Changed
+
+- Set `kubelet-preferred-address-types` to `Hostname` on `AWS`.
+
 ## [1.6.0] - 2022-01-04
 
 ### Changed
