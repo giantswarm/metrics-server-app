@@ -27,6 +27,12 @@ spec:
       containers:
         - name: metrics-server
           args:
+          # See https://github.com/giantswarm/giantswarm/issues/22150
+          {{- if eq .Values.provider "aws" }}
+          - --kubelet-preferred-address-types=Hostname,InternalIP,ExternalIP
+          {{- else }}
+          - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+          {{- end }}
           {{- range .Values.args }}
           - {{ . | quote }}
           {{- end }}
