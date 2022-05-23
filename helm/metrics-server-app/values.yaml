@@ -64,3 +64,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# provider (aws|kvm|azure)
+# The provider that the cluster is running on.
+# This value is set automatically, Do not overwrite this value.
+provider: ""
