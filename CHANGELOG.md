@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [1.7.0] - 2022-05-23
+
 ### Changed
 
 - Set `kubelet-preferred-address-types` to `Hostname` on `AWS`.
@@ -102,7 +104,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
     - Add kubelet-certificate-authority flag
 
-[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.3.0...v1.4.0
