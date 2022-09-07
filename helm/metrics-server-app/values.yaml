@@ -6,7 +6,7 @@ name: metrics-server
 namespace: kube-system
 serviceType: managed
 
-replicas: 1
+replicas: 2
 
 e2e: false
 
@@ -52,18 +52,31 @@ args:
   - --kubelet-use-node-status-port
   - --cert-dir=/tmp
   - --secure-port=10443
+  - --metric-resolution=15s
 
 extraArgs: []
 
 priorityClassName: giantswarm-critical
 
-resources: {}
+resources:
+  requests:
+    cpu: 100m
+    memory: 200Mi
 
-nodeSelector: {}
+nodeSelector:
+  kubernetes.io/os: linux
 
 tolerations: []
 
-affinity: {}
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            k8s-app: metrics-server
+        namespaces:
+          - kube-system
+        topologyKey: kubernetes.io/hostname
 
 # provider (aws|kvm|azure)
 # The provider that the cluster is running on.
