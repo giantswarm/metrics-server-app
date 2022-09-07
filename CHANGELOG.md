@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [2.0.0] - 2022-09-07
+
 ### Changed
 
 - Switch to HA setup.
@@ -114,7 +116,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
     - Add kubelet-certificate-authority flag
 
-[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v1.8.0...HEAD
+[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.8.0...v2.0.0
 [1.8.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.5.0...v1.6.0

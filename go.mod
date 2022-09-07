@@ -1,4 +1,4 @@
-module github.com/giantswarm/metrics-server-app
+module github.com/giantswarm/metrics-server-app/v2
 
 go 1.15
 
