@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Changed
+
+- Switch to HA setup.
+
 ## [1.8.0] - 2022-07-12
 
 ### Changed

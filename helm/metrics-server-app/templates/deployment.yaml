@@ -13,7 +13,6 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1
       maxUnavailable: 1
   template:
     metadata:
@@ -60,6 +59,7 @@ spec:
             name: https
             protocol: TCP
           securityContext:
+            allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: {{ .Values.userID }}
