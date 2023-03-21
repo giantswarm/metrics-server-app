@@ -13,4 +13,6 @@ spec:
   egress:
     - toEntities:
         - kube-apiserver
+        - host
+        - remote-node
 {{ end }}
