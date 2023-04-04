@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Added
+
+- Add cilium network policies.
+
 ## [2.0.0] - 2022-09-07
 
 ### Changed
