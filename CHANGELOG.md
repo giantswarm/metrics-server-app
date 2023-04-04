@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [2.1.0] - 2023-04-04
+
 ### Added
 
 - Add cilium network policies.
@@ -120,7 +122,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
     - Add kubelet-certificate-authority flag
 
-[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.8.0...v2.0.0
 [1.8.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.6.0...v1.7.0
