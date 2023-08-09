@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/metrics-server-app.svg?style=shield)](https://circleci.com/gh/giantswarm/metrics-server-app)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/giantswarm/metrics-server-app/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/giantswarm/metrics-server-app/tree/master)
 
 # kubernetes-metrics-server
 
