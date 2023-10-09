@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix go version in tests.
+
 ## [2.3.0] - 2023-10-09
 
 ### Changed
