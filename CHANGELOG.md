@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [2.3.0] - 2023-10-09
+
 ### Changed
 
 - Replace condition for PSP CR installation.
@@ -134,7 +136,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
     - Add kubelet-certificate-authority flag
 
-[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/giantswarm/metrics-server-app/compare/v1.8.0...v2.0.0
