@@ -21,8 +21,10 @@ spec:
       labels:
         {{- include "labels.common" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ .Values.serviceAccount.name }}
-      priorityClassName: {{ .Values.priorityClassName }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{ toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: metrics-server
           args:
@@ -58,31 +60,37 @@ spec:
           - containerPort: {{ .Values.port }}
             name: https
             protocol: TCP
+          {{- with .Values.resources }}
+          resources:
+            {{ toYaml . | nindent 12 }}
+          {{- end }}
           securityContext:
             allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: {{ .Values.userID }}
             runAsGroup: {{ .Values.groupID }}
+            seccompProfile:
+              type: RuntimeDefault
           volumeMounts:
           - mountPath: /tmp
             name: tmp-dir
-        {{- with .Values.resources }}
-          resources:
-{{ toYaml . | indent 12 }}
-        {{- end }}
-    {{- with .Values.nodeSelector }}
+      {{- with .Values.nodeSelector }}
       nodeSelector:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-{{ toYaml . | indent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
+        {{ toYaml . | nindent 8 }}
+      {{- end }}
+      priorityClassName: {{ .Values.priorityClassName }}
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      {{- with .Values.tolerations }}
       tolerations:
-{{ toYaml . | indent 8 }}
-    {{- end }}
+        {{ toYaml . | nindent 8 }}
+      {{- end }}
       volumes:
       - emptyDir: {}
         name: tmp-dir
