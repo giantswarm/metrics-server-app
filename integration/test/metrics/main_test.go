@@ -1,3 +1,4 @@
+//go:build k8srequired
 // +build k8srequired
 
 package metrics
@@ -12,7 +13,7 @@ import (
 	"github.com/giantswarm/micrologger"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/giantswarm/metrics-server-app/integration/env"
+	"github.com/giantswarm/metrics-server-app/v2/integration/env"
 )
 
 const (
