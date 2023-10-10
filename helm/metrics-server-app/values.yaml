@@ -6,6 +6,10 @@ global:
   podSecurityStandards:
     enforced: false
 
+kyvernoPolicyExceptions:
+  enabled: true
+  namespace: giantswarm
+
 name: metrics-server
 namespace: kube-system
 serviceType: managed
@@ -46,7 +50,7 @@ apiService:
 image:
   registry: docker.io
   name: giantswarm/metrics-server
-  tag: v0.6.1
+  tag: v0.6.4
   pullPolicy: IfNotPresent
 
 args:
@@ -60,6 +64,7 @@ args:
 
 extraArgs: []
 
+hostNetwork: false
 priorityClassName: giantswarm-critical
 
 resources:

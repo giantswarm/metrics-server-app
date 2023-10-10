@@ -23,7 +23,10 @@ spec:
   - 'emptyDir'
   hostPID: false
   hostIPC: false
-  hostNetwork: false
+  hostNetwork: {{ .Values.hostNetwork }}
+  hostPorts:
+  - min: {{ .Values.port }}
+    max: {{ .Values.port }}
   fsGroup:
     rule: 'MustRunAs'
     ranges:
