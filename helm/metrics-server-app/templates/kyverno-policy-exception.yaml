@@ -1,0 +1,36 @@
+{{- if and .Values.kyvernoPolicyExceptions.enabled .Values.hostNetwork }}
+{{- if .Capabilities.APIVersions.Has "kyverno.io/v2alpha1/PolicyException" -}}
+# This Kyverno policy exception is useful for metrics server on EKS cluster
+# where we currently have to use hostNetwork: true
+apiVersion: kyverno.io/v2alpha1
+kind: PolicyException
+metadata:
+  annotations:
+    "helm.sh/hook": "pre-install,pre-upgrade"
+  labels:
+    {{- include "labels.common" . | nindent 4 }}
+  name: {{ .Values.name }}-exceptions
+  namespace: {{ .Values.kyvernoPolicyExceptions.namespace | default .Values.namespace }}
+spec:
+  exceptions:
+  - policyName: disallow-host-namespaces
+    ruleNames:
+    - host-namespaces
+    - autogen-host-namespaces
+  - policyName: disallow-host-ports
+    ruleNames:
+    - host-ports-none
+    - autogen-host-ports-none
+  match:
+    any:
+    - resources:
+        kinds:
+        - Deployment
+        - ReplicaSet
+        - Pod
+        namespaces:
+        - {{ .Values.namespace }}
+        names:
+        - {{ .Values.name }}*
+{{- end -}}
+{{- end -}}

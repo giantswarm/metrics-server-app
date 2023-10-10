@@ -78,6 +78,7 @@ spec:
           volumeMounts:
           - mountPath: /tmp
             name: tmp-dir
+      hostNetwork: {{ .Values.hostNetwork }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{ toYaml . | nindent 8 }}
