@@ -9,6 +9,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ### Fixed
 
+- Disable kubernetes network policy if cilium network policy is enabled.
 - Fix go version in tests.
 
 ## [2.3.0] - 2023-10-09
