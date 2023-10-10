@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [2.4.0] - 2023-10-10
+
 ### Added
 
 - Add possibility to configure `hostNetwork`.
@@ -151,7 +153,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
     - Add kubelet-certificate-authority flag
 
-[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.3.1...HEAD
+[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.4.0...HEAD
+[2.4.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.3.1...v2.4.0
 [2.3.1]: https://github.com/giantswarm/metrics-server-app/compare/v2.3.0...v2.3.1
 [2.3.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.1.0...v2.2.0
