@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  architect: giantswarm/architect@4.31.0
+  architect: giantswarm/architect@4.33.0
 
 workflows:
   version: 2
@@ -8,10 +8,12 @@ workflows:
     jobs:
       - architect/push-to-app-catalog:
           context: architect
+          executor: "app-build-suite"
           name: push-to-default-app-catalog
           app_catalog: "default-catalog"
           app_catalog_test: "default-test-catalog"
           chart: "metrics-server-app"
+          persist_chart_archive: true
           filters:
             # Trigger the job also on git tag.
             tags:
@@ -19,6 +21,7 @@ workflows:
 
       - architect/push-to-app-catalog:
           context: architect
+          executor: "app-build-suite"
           name: push-to-control-plane-app-catalog
           app_catalog: "control-plane-catalog"
           app_catalog_test: "control-plane-test-catalog"
@@ -28,11 +31,10 @@ workflows:
             tags:
               only: /^v.*/
 
-      - architect/integration-test:
-          context: architect
-          name: metrics-integration-test
-          install-app-platform: true
-          test-dir: "integration/test/metrics"
+      - architect/run-tests-with-ats:
+          name: execute chart tests
+          app-test-suite_version: "v0.5.0"
+          app-test-suite_container_tag: "0.5.0"
           filters:
             # Do not trigger the job on merge to master.
             branches:
