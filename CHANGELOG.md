@@ -11,6 +11,11 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 - Allow ingress from `cluster` in `CiliumNetworkPolicy`.
 
+### Changed
+
+- Replace build pipeline with ABS.
+- Replace testing pipeline with ATS basic test.
+
 ## [2.4.0] - 2023-10-10
 
 ### Added
