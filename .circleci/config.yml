@@ -2,6 +2,32 @@ version: 2.1
 orbs:
   architect: giantswarm/architect@4.33.0
 
+# external cluster is used because tests use
+# docker cp.
+# otherwise the kind cluster containers and the
+# container of app-test-suite cannot work together
+jobs:
+  test:
+    machine: true
+    environment:
+      KIND_VERSION: v0.11.1
+      KUBERNETES_VERSION: v1.24.17
+    steps:
+      - checkout
+      - run:
+          name: Download kind
+          command: |
+            curl -sLo kind https://github.com/kubernetes-sigs/kind/releases/download/$KIND_VERSION/kind-linux-amd64 && chmod +x kind && sudo mv kind /usr/bin
+      - run:
+          name: Spin up cluster
+          command: |
+            kind create cluster --config tests/kind_config.yaml --kubeconfig kind.kube.config
+      - architect/run-tests-with-ats:
+          chart_archive_prefix: "metrics-server"
+          app-test-suite_version: "v0.5.0"
+          app-test-suite_container_tag: "0.5.0"
+          additional_app-test-suite_flags: "--external-cluster-version $KUBERNETES_VERSION"
+
 workflows:
   version: 2
   build:
@@ -31,17 +57,17 @@ workflows:
             tags:
               only: /^v.*/
 
-      - architect/run-tests-with-ats:
-          name: execute chart tests
-          app-test-suite_version: "v0.5.0"
-          app-test-suite_container_tag: "0.5.0"
+      - test:
+          name: execute tests
+          requires:
+            - push-to-default-app-catalog
           filters:
-            # Do not trigger the job on merge to master.
+            # Do not trigger the job on master branch or release tags.
             branches:
               ignore:
                 - master
-          requires:
-            - push-to-default-app-catalog
+            tags:
+              ignore: /^v.*/
 
       - architect/push-to-app-collection:
           context: architect
