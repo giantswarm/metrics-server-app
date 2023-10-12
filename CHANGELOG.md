@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [2.4.1] - 2023-10-12
+
 ### Fixed
 
 - Allow ingress from `cluster` in `CiliumNetworkPolicy`.
@@ -162,7 +164,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
     - Add kubelet-certificate-authority flag
 
-[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.4.0...HEAD
+[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.4.1...HEAD
+[2.4.1]: https://github.com/giantswarm/metrics-server-app/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.3.1...v2.4.0
 [2.3.1]: https://github.com/giantswarm/metrics-server-app/compare/v2.3.0...v2.3.1
 [2.3.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.2.0...v2.3.0
