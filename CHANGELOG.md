@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Fixed
+
+- Allow ingress from `cluster` in `CiliumNetworkPolicy`.
+
 ## [2.4.0] - 2023-10-10
 
 ### Added
