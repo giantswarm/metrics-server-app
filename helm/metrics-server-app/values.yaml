@@ -21,10 +21,6 @@ e2e: false
 userID: 1000
 groupID: 1000
 
-project:
-  branch: "[[ .Branch ]]"
-  commit: "[[ .SHA ]]"
-
 port: 10443
 
 rbac:
