@@ -42,6 +42,7 @@ class PodMetrics(NamespacedAPIObject):
     kind = "PodMetrics"
 
 @pytest.mark.smoke
+@pytest.mark.upgrade
 def test_api_working(kube_cluster: Cluster) -> None:
     """
     Test if the kubernetes api works
@@ -52,6 +53,7 @@ def test_api_working(kube_cluster: Cluster) -> None:
     kube_cluster.kubectl("get ns")
 
 @pytest.mark.smoke
+@pytest.mark.upgrade
 def test_app_deployed(kube_cluster: Cluster):
     app = (
         AppCR.objects(kube_cluster.kube_client)
