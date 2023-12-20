@@ -44,7 +44,7 @@ apiService:
   insecureSkipTLSVerify: true
 
 image:
-  registry: docker.io
+  registry: gsoci.azurecr.io
   name: giantswarm/metrics-server
   tag: v0.6.4
   pullPolicy: IfNotPresent
