@@ -90,3 +90,10 @@ provider: ""
 
 ciliumNetworkPolicy:
   enabled: false
+
+# Lower bounds for vertical autoscaling.
+verticalPodAutoscaler:
+  enabled: true
+  minAllowed:
+    cpu: 100m
+    memory: 200Mi
