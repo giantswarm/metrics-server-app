@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Added
+
+- Add VPA setting for `metrics-server`.
+
 ## [2.4.2] - 2023-12-20
 
 ### Changed
