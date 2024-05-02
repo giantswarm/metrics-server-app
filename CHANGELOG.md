@@ -10,6 +10,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 ### Added
 
 - Add VPA setting for `metrics-server`.
+- Chart: Update PolicyExceptions to v2beta1. ([#226](https://github.com/giantswarm/metrics-server-app/pull/226))
 
 ## [2.4.2] - 2023-12-20
 

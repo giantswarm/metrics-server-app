@@ -1,8 +1,8 @@
 {{- if and .Values.kyvernoPolicyExceptions.enabled .Values.hostNetwork }}
-{{- if .Capabilities.APIVersions.Has "kyverno.io/v2alpha1/PolicyException" -}}
+{{- if .Capabilities.APIVersions.Has "kyverno.io/v2beta1/PolicyException" -}}
 # This Kyverno policy exception is useful for metrics server on EKS cluster
 # where we currently have to use hostNetwork: true
-apiVersion: kyverno.io/v2alpha1
+apiVersion: kyverno.io/v2beta1
 kind: PolicyException
 metadata:
   annotations:
