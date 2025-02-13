@@ -6,7 +6,8 @@ metadata:
   labels:
     {{- include "labels.common" . | nindent 4 }}
 spec:
-  minAvailable: 1
   selector:
     matchLabels:
       {{- include "labels.selector" . | nindent 6 }}
+  minAvailable: 1
+  unhealthyPodEvictionPolicy: AlwaysAllow
