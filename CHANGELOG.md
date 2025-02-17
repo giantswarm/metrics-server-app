@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [2.5.0] - 2025-02-17
+
 ### Added
 
 - Add VPA setting for `metrics-server`.
@@ -175,7 +177,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
     - Add kubelet-certificate-authority flag
 
-[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.4.2...HEAD
+[Unreleased]: https://github.com/giantswarm/metrics-server-app/compare/v2.5.0...HEAD
+[2.5.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.4.2...v2.5.0
 [2.4.2]: https://github.com/giantswarm/metrics-server-app/compare/v2.4.1...v2.4.2
 [2.4.1]: https://github.com/giantswarm/metrics-server-app/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/giantswarm/metrics-server-app/compare/v2.3.1...v2.4.0
