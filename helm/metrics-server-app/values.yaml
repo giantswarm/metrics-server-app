@@ -46,7 +46,7 @@ apiService:
 image:
   registry: gsoci.azurecr.io
   name: giantswarm/metrics-server
-  tag: v0.6.4
+  tag: v0.7.2
   pullPolicy: IfNotPresent
 
 args:
