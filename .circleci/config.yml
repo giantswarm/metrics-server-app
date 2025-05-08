@@ -44,27 +44,11 @@ workflows:
             # Trigger the job also on git tag.
           tags:
             only: /^v.*/
-
           branches:
             ignore:
             - main
             - master
-    - architect/push-to-app-catalog:
-        context: architect
-        executor: app-build-suite
-        name: push-to-control-plane-app-catalog
-        app_catalog: control-plane-catalog
-        app_catalog_test: control-plane-test-catalog
-        chart: metrics-server-app
-        filters:
-            # Trigger the job also on git tag.
-          tags:
-            only: /^v.*/
 
-          branches:
-            ignore:
-            - main
-            - master
     - test:
         name: execute tests
         requires:
@@ -76,31 +60,3 @@ workflows:
             - master
           tags:
             ignore: /^v.*/
-
-    - architect/push-to-app-collection:
-        context: architect
-        name: push-metrics-server-to-aws-app-collection
-        app_name: metrics-server-app
-        app_namespace: kube-system
-        app_collection_repo: aws-app-collection
-        requires:
-        - push-to-control-plane-app-catalog
-        filters:
-          branches:
-            ignore: /.*/
-          tags:
-            only: /^v.*/
-
-    - architect/push-to-app-collection:
-        context: architect
-        name: push-metrics-server-to-azure-app-collection
-        app_name: metrics-server-app
-        app_namespace: kube-system
-        app_collection_repo: azure-app-collection
-        requires:
-        - push-to-control-plane-app-catalog
-        filters:
-          branches:
-            ignore: /.*/
-          tags:
-            only: /^v.*/
