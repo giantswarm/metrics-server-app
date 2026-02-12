@@ -3,7 +3,7 @@ appVersion: v0.8.1
 description: Metrics Server is a cluster-wide aggregator of resource usage data.
 home: https://github.com/giantswarm/metrics-server-app
 name: metrics-server-app
-version: 2.7.0
+version: 2.8.0
 icon: https://s.giantswarm.io/app-icons/k8s-initiator/1/dark.svg
 annotations:
   io.giantswarm.application.team: "atlas"
