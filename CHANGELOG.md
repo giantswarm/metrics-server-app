@@ -10,6 +10,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 ### Fixed
 
 - Fix ABS config to not override AppVersion in Chart.yaml
+- Trim trailing separators from the `helm.sh/chart` label so long generated chart versions truncated to 63 characters remain valid Kubernetes label values.
 
 ## [2.8.0] - 2026-02-12
 
