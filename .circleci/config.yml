@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  architect: giantswarm/architect@8.3.0
+  architect: giantswarm/architect@9.4.1
 
 # external cluster is used because tests use
 # docker cp.
@@ -40,6 +40,7 @@ workflows:
         app_catalog_test: default-test-catalog
         chart: metrics-server-app
         persist_chart_archive: true
+        override_app_version: false
         filters:
             # Trigger the job also on git tag.
           tags:
