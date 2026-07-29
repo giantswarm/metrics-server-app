@@ -12,7 +12,7 @@ pytest-rerunfailures = ">=10.2"
 requests = "~=2.33.0"
 
 [requires]
-python_version = "3.9"
+python_version = "3.12"
 
 [pipenv]
 allow_prereleases = true
