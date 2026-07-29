@@ -10,8 +10,8 @@ jobs:
   test:
     machine: true
     environment:
-      KIND_VERSION: v0.11.1
-      KUBERNETES_VERSION: v1.24.17
+      KIND_VERSION: v0.31.0
+      KUBERNETES_VERSION: v1.34.3
     steps:
     - checkout
     - run:
@@ -21,11 +21,11 @@ jobs:
     - run:
         name: Spin up cluster
         command: |
-          kind create cluster --config tests/kind_config.yaml --kubeconfig kind.kube.config
+          kind create cluster --config tests/kind_config.yaml --kubeconfig kind.kube.config --image kindest/node:$KUBERNETES_VERSION
     - architect/run-tests-with-ats:
         chart_archive_prefix: metrics-server
-        app-test-suite_version: v0.5.0
-        app-test-suite_container_tag: 0.5.0
+        app-test-suite_version: v0.15.0
+        app-test-suite_container_tag: 0.15.0
         additional_app-test-suite_flags: --external-cluster-version $KUBERNETES_VERSION
 
 workflows:
