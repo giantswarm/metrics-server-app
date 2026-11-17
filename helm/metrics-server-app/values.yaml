@@ -9,6 +9,9 @@ global:
 kyvernoPolicyExceptions:
   enabled: true
   namespace: giantswarm
+  legacy:
+    # Renders the kyverno.io/v2 PolicyException, which applies to ClusterPolicies only. Will be used as a global switch in a future release.
+    enabled: true
 
 name: metrics-server
 namespace: kube-system
