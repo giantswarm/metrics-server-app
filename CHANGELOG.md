@@ -10,6 +10,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 ### Changed
 
 - Updated test pipeline components
+- Update architect to v10.18.0 (giantswarm/metrics-server-app#374)
 
 ### Fixed
 
