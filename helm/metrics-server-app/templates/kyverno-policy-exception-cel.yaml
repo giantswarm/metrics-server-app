@@ -38,5 +38,5 @@ spec:
       request.kind.kind in ['Deployment', 'ReplicaSet', 'Pod', 'ServiceAccount'] &&
       request.namespace == '{{ .Values.namespace }}' &&
       has(object.metadata.name) &&
-      object.metadata.name.startsWith('{{ .Values.name }}')
+      (object.metadata.name == '{{ .Values.name }}' || object.metadata.name.startsWith('{{ .Values.name }}-'))
 {{- end -}}
