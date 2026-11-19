@@ -1,0 +1,42 @@
+{{- if and .Values.kyvernoPolicyExceptions.enabled .Values.hostNetwork }}
+# This Kyverno policy exception is useful for metrics server on EKS cluster
+# where we currently have to use hostNetwork: true
+apiVersion: policies.kyverno.io/v1
+kind: PolicyException
+metadata:
+  annotations:
+    "helm.sh/hook": "pre-install,pre-upgrade"
+  labels:
+    {{- include "labels.common" . | nindent 4 }}
+  name: {{ .Values.name }}-exceptions
+  namespace: {{ .Values.kyvernoPolicyExceptions.namespace | default .Values.namespace }}
+spec:
+  policyRefs:
+  - name: disallow-host-namespaces
+    kind: ValidatingPolicy
+  - name: disallow-host-ports
+    kind: ValidatingPolicy
+  # require-container-requests-and-limits is a supplemental policy and usually
+  # not enabled. It is excepted because the metrics-server Deployment fails it
+  # when the policy is enforced.
+  - name: require-container-requests-and-limits
+    kind: ValidatingPolicy
+  # require-emptydir-requests-and-limits is a supplemental policy and usually not
+  # enabled. It is excepted because the metrics-server Deployment fails it when
+  # the policy is enforced.
+  - name: require-emptydir-requests-and-limits
+    kind: ValidatingPolicy
+  # restrict-sa-automount-sa-token is a supplemental policy and usually not
+  # enabled. It is excepted because the metrics-server ServiceAccount fails it
+  # when the policy is enforced.
+  - name: restrict-sa-automount-sa-token
+    kind: ValidatingPolicy
+  matchConditions:
+  - name: metrics-server-workloads
+    # ServiceAccount is matched for restrict-sa-automount-sa-token.
+    expression: >-
+      request.kind.kind in ['Deployment', 'ReplicaSet', 'Pod', 'ServiceAccount'] &&
+      request.namespace == '{{ .Values.namespace }}' &&
+      has(object.metadata.name) &&
+      (object.metadata.name == '{{ .Values.name }}' || object.metadata.name.startsWith('{{ .Values.name }}-'))
+{{- end -}}

@@ -1,4 +1,4 @@
-{{- if and .Values.kyvernoPolicyExceptions.enabled .Values.hostNetwork }}
+{{- if and .Values.kyvernoPolicyExceptions.enabled .Values.kyvernoPolicyExceptions.legacy.enabled .Values.hostNetwork }}
 {{- if .Capabilities.APIVersions.Has "kyverno.io/v2/PolicyException" -}}
 # This Kyverno policy exception is useful for metrics server on EKS cluster
 # where we currently have to use hostNetwork: true
@@ -9,6 +9,7 @@ metadata:
     "helm.sh/hook": "pre-install,pre-upgrade"
   labels:
     {{- include "labels.common" . | nindent 4 }}
+    policy.giantswarm.io/migrated-to-cel: "true"
   name: {{ .Values.name }}-exceptions
   namespace: {{ .Values.kyvernoPolicyExceptions.namespace | default .Values.namespace }}
 spec:
