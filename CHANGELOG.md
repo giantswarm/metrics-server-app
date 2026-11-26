@@ -7,8 +7,14 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Added
+
+- Add a PolicyException for the Kyverno CEL policies.
+- Label the `kyverno.io/v2` PolicyException with `policy.giantswarm.io/migrated-to-cel: "true"`, to mark it as migrated to CEL.
+
 ### Changed
 
+- Move the PolicyExceptions to `kube-system`.
 - Updated test pipeline components
 - Update architect to v10.18.0 (giantswarm/metrics-server-app#374)
 
